@@ -17,29 +17,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/**
- * Main Page
- */
-Route::get('/', HomeController::class)->name('home');
+Route::name('site.')->group(function (){
 
-/**
- * Products Page
- */
-Route::get('produtos', [CategoryController::class, 'index'])->name('produtos.index');
-Route::get('produtos/{slug}', [CategoryController::class, 'show'])->name('produtos.show');
+    /**
+     * Main Page
+     */
+    Route::get('/', HomeController::class)->name('home');
 
-/**
- * Blog Page
- */
-Route::get('blog', BlogController::class)->name('blog');
+    /**
+     * Products Page
+     */
+    Route::get('produtos', [CategoryController::class, 'index'])->name('products');
+    Route::get('produtos/{slug}', [CategoryController::class, 'show'])->name('produtos.show');
 
-/**
- * About Page
- */
-Route::view('sobre', 'site.about.index');
+    /**
+     * Blog Page
+     */
+    Route::get('blog', BlogController::class)->name('blog');
 
-/**
- * Contact Page
- */
-Route::get('contato', [ContactController::class, 'index'])->name('contact.index');
-Route::post('contato', [ContactController::class, 'form'])->name('contact.form');
+    /**
+     * About Page
+     */
+    Route::view('sobre', 'site.about.index')->name('about');
+
+    /**
+     * Contact Page
+     */
+    Route::get('contato', [ContactController::class, 'index'])->name('contact');
+    Route::post('contato', [ContactController::class, 'form'])->name('contact.form');
+
+
+});

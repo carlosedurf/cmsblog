@@ -1,1 +1,1 @@
-<h1>Tela de categorias especifica: {{ $slug }}</h1>
+essa é pagina da categoria: {{$slug}}
