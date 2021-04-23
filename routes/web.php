@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Site\BlogController;
+use App\Http\Controllers\Site\CategoryController;
+use App\Http\Controllers\Site\ContactController;
+use App\Http\Controllers\Site\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * Main Page
+ */
+Route::get('/', HomeController::class)->name('home');
+
+/**
+ * Products Page
+ */
+Route::get('produtos', [CategoryController::class, 'index'])->name('produtos.index');
+Route::get('produtos/{slug}', [CategoryController::class, 'show'])->name('produtos.show');
+
+/**
+ * Blog Page
+ */
+Route::get('blog', BlogController::class)->name('blog');
+
+/**
+ * About Page
+ */
+Route::view('sobre', 'site.about.index');
+
+/**
+ * Contact Page
+ */
+Route::get('contato', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contato', [ContactController::class, 'form'])->name('contact.form');
