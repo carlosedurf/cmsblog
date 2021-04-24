@@ -45,6 +45,9 @@
 
     <!-- Lightbox -->
     <link rel="stylesheet" type="text/css" href="{{asset('lightbox/css/lightbox.css')}}"/>
+
+    @toastr_css
+
 </head>
 <body>
 <nav>
@@ -150,6 +153,9 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="{{asset('lightbox/js/lightbox.js')}}"></script>
+
+@toastr_js
+@toastr_render
 
 <script>
     $("#toggle").click(function () {

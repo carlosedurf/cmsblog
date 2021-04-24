@@ -11,31 +11,28 @@
                 <form class="contact__form" action="{{route('site.contact.form')}}" method="post">
                     @csrf
                     @if(session('success'))
-                        <div>
+                        <div style="border: 1px solid #0F0; padding: 5px 0; color: darkgreen; margin-bottom: 10px;">
                             {{session('message')}}
-                        </div>
                     @endif
-                    <div>
-                    </div>
                     <label for="name">Nome completo</label>
-                    <input id="name" name="name" type="text" tabindex="1" placeholder="Ex: José da Silva"
+                    <input id="name" name="name" required type="text" tabindex="1" placeholder="Ex: José da Silva"
                            autofocus value="{{old('name')}}">
                     @error('name')
-                    <div>{{ $message }}</div>
+                    <div style="border: 1px solid #F00; padding: 5px 0; color: darkred; margin-bottom: 10px;">{{ $message }}</div>
                     @enderror
 
                     <label for="email">Email</label>
-                    <input id="email" name="email" type="text" tabindex="2" placeholder="Ex: email@email.com.br"
+                    <input id="email" name="email" required type="text" tabindex="2" placeholder="Ex: email@email.com.br"
                            value="{{old('email')}}">
                     @error('email')
-                    <div>{{ $message }}</div>
+                    <div style="border: 1px solid #F00; padding: 5px 0; color: darkred; margin-bottom: 10px;">{{ $message }}</div>
                     @enderror
 
                     <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" tabindex="3" cols="20" rows="4"
+                    <textarea id="message" name="message" required tabindex="3" cols="20" rows="4"
                               placeholder="Digite aqui...">{{old('message')}}</textarea>
                     @error('message')
-                    <div>{{ $message }}</div>
+                    <div style="border: 1px solid #F00; padding: 5px 0; color: darkred; margin-bottom: 10px;">{{ $message }}</div>
                     @enderror
 
                     <button class="button button_primary" type="submit">Enviar mensagem</button>
